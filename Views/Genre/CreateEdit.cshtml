@@ -1,0 +1,30 @@
+@model MusicStore.Models.Genre
+
+@{
+    ViewData["Title"] = "Add/Edit Genre";
+}
+
+<form asp-action="CreateEdit">
+    <div class="form-horizontal">
+        <input type="hidden" asp-for="ID" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Label" class="col-md-2 control-label"></label>
+        <div class="col-md-10">
+            <input asp-for="Label" class="form-control" />
+            <span asp-validation-for="Label" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <br/><br/>
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Save" class="btn btn-default" />
+            <a asp-action="Index" class="btn btn-success">Back to List</a>
+        </div>
+    </div>
+</form>
+
+@section Scripts 
+{
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

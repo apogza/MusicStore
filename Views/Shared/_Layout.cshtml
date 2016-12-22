@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - MusicStore</title>
+    <title>@ViewData["Title"] - Music Store</title>
 
     <environment names="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
@@ -26,13 +26,14 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">MusicStore</a>
+                <a asp-area="" asp-controller="Album" asp-action="Index" class="navbar-brand">Music Store</a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
+                    <li><a asp-area="" asp-controller="Album" asp-action="Index">Albums</a></li>
+                    <li><a asp-area="" asp-controller="Song" asp-action="Index">Songs</a></li>
+                    <li><a asp-area="" asp-controller="Artist" asp-action="Index">Artists</a></li>
+                    <li><a asp-area="" asp-controller="Genre" asp-action="Index">Genres</a></li>
                 </ul>
                 @await Html.PartialAsync("_LoginPartial")
             </div>
@@ -42,7 +43,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; 2016 - MusicStore</p>
+            <p>&copy; 2016 - Music Store</p>
         </footer>
     </div>
 

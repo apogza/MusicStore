@@ -1,0 +1,13 @@
+@model Genre
+
+@{
+    ViewData["Title"] = "View Genre";
+}
+
+<h1>@Model.Label</h1>
+
+@if(Model.Albums != null && Model.Albums.Count > 0)
+{
+    <h3>Albums</h3>
+    await Html.RenderPartialAsync("AlbumsPartial", Model.Albums);
+}

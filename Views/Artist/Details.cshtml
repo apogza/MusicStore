@@ -1,0 +1,21 @@
+@model MusicStore.Models.Artist
+
+@{
+    ViewData["Title"] = "View Artist";
+}
+
+<h1>@Model.Name</h1>
+@Html.DisplayFor(model => model.Description)
+
+<h3>
+    Albums
+    <!--a asp-controller="Album" asp-action="CreateEditByArtistId" asp-route-id="@Model.ID" class="btn btn-success">
+        Create New
+    </a-->
+</h3>
+<br />
+
+@if(Model.Albums != null && Model.Albums.Count > 0)
+{
+    await Html.RenderPartialAsync("AlbumsPartial", Model.Albums);
+}

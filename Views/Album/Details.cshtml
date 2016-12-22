@@ -1,0 +1,15 @@
+@model MusicStore.Models.Album
+
+@{
+    ViewData["Title"] = "View Album";
+}
+
+<h1>@Html.DisplayFor(model => model.Artist.Name) - @Model.Name</h1>
+<h3>@Html.DisplayFor(model => model.YearRelease), @Html.DisplayFor(model => model.Genre.Label)</h3>
+
+@if(Model.Songs != null && Model.Songs.Count > 0)
+{
+    await Html.RenderPartialAsync("SongPartial", Model.Songs);
+}
+
+

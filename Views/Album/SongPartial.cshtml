@@ -1,0 +1,19 @@
+@model IEnumerable<MusicStore.Models.Song>
+
+<table class="table">
+    <thead>
+        <th width="150">@Html.DisplayNameFor(model => model.TrackNumber)</th>
+        <th width="100">Duration</th>
+        <th>@Html.DisplayNameFor(model => model.Name)</th>      
+    </thead>
+    <tbody>
+        @foreach(Song song in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(model => song.TrackNumber)</td>
+                <td>@Html.DisplayFor(model => song.Minutes):@Html.DisplayFor(model => song.Seconds)</td>
+                <td>@Html.DisplayFor(model => song.Name)</td>
+            </tr>
+        }
+    </tbody>
+</table>

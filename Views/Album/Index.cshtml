@@ -1,0 +1,32 @@
+@model IEnumerable<MusicStore.Models.Album>
+
+@{
+    ViewData["Title"] = "Albums";
+}
+
+<h3>
+    @ViewData["Title"]
+    <a asp-action="CreateEdit" class="btn btn-success">Create New</a>
+</h3>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.Name)</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(Album album in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(model => album.Name)</td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@album.ID" class="btn btn-success">View</a>
+                    <a asp-action="CreateEdit" asp-route-id="@album.ID" class="btn btn-success">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@album.ID" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
