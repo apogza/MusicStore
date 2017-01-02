@@ -1,34 +1,42 @@
 @model IEnumerable<MusicStore.Models.Song>
 
 @{ 
-    ViewData["Title"] = "Music Store - View Songs";
-    ViewData["Header"] = "Songs";
+    ViewData["Title"] = "Music Store - Songs";
 }
+<h3>Songs</h3>
 
-<h3>
-    @ViewData["Header"]
-    <a asp-action="CreateEdit" class="btn btn-success">Create New</a>
-</h3>
-
-
-<table class="table">
-    <thead>
-        <tr>
-            <th>@Html.DisplayNameFor(model => model.Name)</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach(Song song in Model)
-        {
-            <tr>
-                <td>@Html.DisplayFor(model => song.Name)</td>
-                <td>
-                    <a asp-action="Details" asp-route-id="@song.ID" class="btn btn-success" >View</a> 
-                    <a asp-action="CreateEdit" asp-route-id="@song.ID" class="btn btn-success">Edit</a> 
-                    <a asp-action="Delete" asp-route-id="@song.ID" class="btn btn-danger">Delete</a>
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <a asp-action="CreateEdit" class="btn btn-success">Create New Song</a>
+    </div>
+    <div class="panel-body">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.Name)</th>
+                    <th>@Html.DisplayNameFor(model => model.TrackNumber)</th>
+                    <th>@Html.DisplayNameFor(model => model.Duration)</th>
+                    <th>@Html.DisplayNameFor(model => model.Album.Name)</th>
+                    <th>@Html.DisplayNameFor(model => model.Album.YearRelease)</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach(Song song in Model)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(model => song.Name)</td>
+                        <td>@Html.DisplayFor(model => song.TrackNumber)</td>
+                        <td>@Html.DisplayFor(model => song.Duration)</td>
+                        <td>@Html.DisplayFor(model => song.Album.Name)</td>
+                        <td>@Html.DisplayFor(model => song.Album.YearRelease)</td>
+                        <td>
+                            <a asp-action="CreateEdit" asp-route-id="@song.ID" class="btn btn-success">Edit</a> 
+                            <a asp-action="Delete" asp-route-id="@song.ID" class="btn btn-danger">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,2 +1,11 @@
 @model MusicStore.Models.Album
-@{await Html.RenderPartialAsync("CreateEdit", Model);}
+
+@{
+    ViewData["Title"] = "Create / Edit Album";
+    ViewBag.ListGenres = new SelectList(ViewBag.ListGenres, "ID", "Label");
+    ViewBag.ListArtists = new SelectList(ViewBag.ListArtists, "ID", "Name");
+}
+
+<form asp-action="CreateEditByArtistId" class="form-horizontal">
+    @{await Html.RenderPartialAsync("CreateEditPartial", Model);}
+</form>

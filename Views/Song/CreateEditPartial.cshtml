@@ -1,0 +1,47 @@
+@model MusicStore.Models.Song
+
+<div class="form-group">
+    <input type="hidden" asp-for="ID" />
+</div>
+<div class="form-group">
+    <label asp-for="TrackNumber" class="col-md-2 control-label"></label>
+    <div class="col-md-10">
+        <input asp-for="TrackNumber" class="form-control" />
+        <span asp-validation-for="TrackNumber" class="text-danger"></span>
+    </div>
+</div>
+<div class="form-group">
+    <label asp-for="Name" class="col-md-2 control-label"></label>
+    <div class="col-md-10">
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+</div>
+<div class="form-group">
+    <label asp-for="Minutes" class="col-md-2 control-label"></label>
+    <div class="col-md-10">
+        <input asp-for="Minutes" class="form-control" />
+        <span asp-validation-for="Minutes" class="text-danger"></span>
+    </div>
+</div>
+<div class="form-group">
+    <label asp-for="Seconds" class="col-md-2 control-label"></label>
+    <div class="col-md-10">
+        <input asp-for="Seconds" class="form-control" />
+        <span asp-validation-for="Seconds" class="text-danger"></span>
+    </div>
+</div>
+
+<div class="form-group">
+    <label asp-for="AlbumID" class="col-md-2 control-label"></label>
+    <div class="col-md-10">
+        @Html.DropDownListFor(model => model.AlbumID, (SelectList)ViewBag.ListAlbums, new {@class="form-control"})
+        <span asp-validation-for="AlbumID" class="text-danger"></span>
+    </div>
+</div>
+<div class="form-group">
+    <div class="col-md-offset-2 col-md-10">
+        <input type="submit" value="Save" class="btn btn-default" />
+        <a asp-action="Index" class="btn btn-success">Back to List</a>
+    </div>
+</div>

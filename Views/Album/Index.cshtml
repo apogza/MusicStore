@@ -1,32 +1,41 @@
 @model IEnumerable<MusicStore.Models.Album>
 
 @{
-    ViewData["Title"] = "Albums";
+    ViewData["Title"] = "Music Store - Albums";
 }
 
-<h3>
-    @ViewData["Title"]
-    <a asp-action="CreateEdit" class="btn btn-success">Create New</a>
-</h3>
+<h3>Albums</h3>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>@Html.DisplayNameFor(model => model.Name)</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach(Album album in Model)
-        {
-            <tr>
-                <td>@Html.DisplayFor(model => album.Name)</td>
-                <td>
-                    <a asp-action="Details" asp-route-id="@album.ID" class="btn btn-success">View</a>
-                    <a asp-action="CreateEdit" asp-route-id="@album.ID" class="btn btn-success">Edit</a>
-                    <a asp-action="Delete" asp-route-id="@album.ID" class="btn btn-danger">Delete</a>
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <a asp-action="CreateEdit" class="btn btn-success">Create New Album</a>
+    </div>
+    <div class="panel-body">
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.Name)</th>
+                    <th>@Html.DisplayNameFor(model => model.Artist.Name)</th>
+                    <th>@Html.DisplayNameFor(model => model.YearRelease)</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach(Album album in Model)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(model => album.Name)</td>
+                        <td>@Html.DisplayFor(model => album.Artist.Name)</td>
+                        <td>@Html.DisplayFor(model => album.YearRelease)</td>
+                        <td>
+                            <a asp-action="Details" asp-route-id="@album.ID" class="btn btn-success">View</a>
+                            <a asp-action="CreateEdit" asp-route-id="@album.ID" class="btn btn-success">Edit</a>
+                            <a asp-action="Delete" asp-route-id="@album.ID" class="btn btn-danger">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

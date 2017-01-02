@@ -3,13 +3,34 @@
 @{
     ViewData["Title"] = "View Album";
 }
+<p></p>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3>@Html.DisplayFor(model => model.Name)</h3>
+    </div>
+    <div class="panel-body">
+        by @Html.DisplayFor(model => model.Artist.Name)<br />
+        Released @Html.DisplayFor(model => model.YearRelease)<br />
+        @Html.DisplayFor(model => model.Genre.Label)
+    </div>
+</div>
 
-<h1>@Html.DisplayFor(model => model.Artist.Name) - @Model.Name</h1>
-<h3>@Html.DisplayFor(model => model.YearRelease), @Html.DisplayFor(model => model.Genre.Label)</h3>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <a asp-controller="Song" asp-action="CreateEditByAlbumId" asp-route-id="@Model.ID" class="btn btn-success">
+            Add New Song
+        </a>
 
-@if(Model.Songs != null && Model.Songs.Count > 0)
-{
-    await Html.RenderPartialAsync("SongPartial", Model.Songs);
-}
-
+    </div>
+    <div class="panel-body">
+        @if(Model.Songs != null && Model.Songs.Count > 0)
+        {
+            await Html.RenderPartialAsync("SongPartial", Model.Songs);
+        }
+        else
+        {
+            <p>No Songs Found!</p>
+        }
+    </div>
+</div>
 

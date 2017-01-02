@@ -5,6 +5,6 @@
     ViewBag.ListAlbums = new SelectList(ViewBag.ListAlbums, "ID", "Name");
 }
 
-<form asp-action="CreateEdit" class="form-horizontal">
-    await @Html.RenderPartialAsync("CreateEditPartial", Model)
+<form asp-action="CreateEditByAlbumId" class="form-horizontal">
+    @{ await Html.RenderPartialAsync("CreateEditPartial", Model); }
 </form>

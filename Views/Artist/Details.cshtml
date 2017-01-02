@@ -3,19 +3,27 @@
 @{
     ViewData["Title"] = "View Artist";
 }
+<p></p>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3>@Model.Name</h3>
+    </div>
+    <div class="panel-body">
+        @Html.DisplayFor(model => model.Description)
+    </div>
+</div>
 
-<h1>@Model.Name</h1>
-@Html.DisplayFor(model => model.Description)
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <a asp-controller="Album" asp-action="CreateEditByArtistId" asp-route-id="@Model.ID" class="btn btn-success">
+            Create New Album
+        </a>
+    </div>
+    <div class="panel-body">
+        @if(Model.Albums != null && Model.Albums.Count > 0)
+        {
+            await Html.RenderPartialAsync("AlbumsPartial", Model.Albums);
+        }
+    </div>
+</div>
 
-<h3>
-    Albums
-    <!--a asp-controller="Album" asp-action="CreateEditByArtistId" asp-route-id="@Model.ID" class="btn btn-success">
-        Create New
-    </a-->
-</h3>
-<br />
-
-@if(Model.Albums != null && Model.Albums.Count > 0)
-{
-    await Html.RenderPartialAsync("AlbumsPartial", Model.Albums);
-}

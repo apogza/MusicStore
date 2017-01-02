@@ -24,40 +24,31 @@ namespace MusicStore.Data
             if(includes != null)
             {
                 foreach(string includeProperty in includes)
-                {
                     query = query.Include(includeProperty);
-                }
             }
 
             return await query.Where(a => a.ID == id).SingleOrDefaultAsync();
         }
 
-        public virtual IEnumerable<TEntity> Get(
+        public virtual async Task<IEnumerable<TEntity>> Get(
             Expression<Func<TEntity, bool>> filter = null,
             Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null,
-            string includeProperties = "")
+            IEnumerable<string> includeProperties = null)
         {
             IQueryable<TEntity> query = Entities;
 
             if (filter != null)
-            {
                 query = query.Where(filter);
+
+            if(includeProperties != null)
+            {
+                foreach(string includeProperty in includeProperties)
+                    query = query.Include(includeProperty);
             }
 
-            foreach (var includeProperty in includeProperties.Split
-                (new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
-            {
-                query = query.Include(includeProperty);
-            }
-
-            if (orderBy != null)
-            {
-                return orderBy(query).ToList();
-            }
-            else
-            {
-                return query.ToList();
-            }
+            return (orderBy != null) ?  
+                        await orderBy(query).ToListAsync() : 
+                            await query.ToListAsync();
         }
 
         public virtual async void Insert(TEntity entity)

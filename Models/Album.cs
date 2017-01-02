@@ -1,4 +1,4 @@
-using System;
+
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
@@ -7,6 +7,7 @@ namespace MusicStore.Models
     public class Album : BaseEntity
     {
         [Required]
+        [DisplayAttribute(Name="Album Name")]
         public string Name { get; set; }
         
         [DisplayAttribute(Name = "Year of Release")]

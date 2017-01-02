@@ -3,7 +3,7 @@
 <table class="table">
     <thead>
         <th width="150">@Html.DisplayNameFor(model => model.TrackNumber)</th>
-        <th width="100">Duration</th>
+        <th width="100">@Html.DisplayNameFor(model => model.Duration)</th>
         <th>@Html.DisplayNameFor(model => model.Name)</th>      
     </thead>
     <tbody>
@@ -11,7 +11,7 @@
         {
             <tr>
                 <td>@Html.DisplayFor(model => song.TrackNumber)</td>
-                <td>@Html.DisplayFor(model => song.Minutes):@Html.DisplayFor(model => song.Seconds)</td>
+                <td>@Html.DisplayFor(model => song.Duration)</td>
                 <td>@Html.DisplayFor(model => song.Name)</td>
             </tr>
         }
