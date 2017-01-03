@@ -18,16 +18,13 @@ namespace MusicStore.Data
             _dbContext = dbContext;
         }
 
-        public virtual async Task<TEntity> GetById(int id, IEnumerable<string> includes = null)
+        public virtual async Task<TEntity> GetById( int id, 
+                                                    IEnumerable<string> includes = null)
         {
-            IQueryable<TEntity> query = Entities;
-            if(includes != null)
-            {
-                foreach(string includeProperty in includes)
-                    query = query.Include(includeProperty);
-            }
+            Expression<Func<TEntity, bool>> filter = (entity => entity.ID == id);
 
-            return await query.Where(a => a.ID == id).SingleOrDefaultAsync();
+            IEnumerable<TEntity> result = await Get(filter, null, includes);
+            return result.SingleOrDefault();
         }
 
         public virtual async Task<IEnumerable<TEntity>> Get(
@@ -106,7 +103,6 @@ namespace MusicStore.Data
                 return Entities;
             }
         }
-
         private DbSet<TEntity> Entities
         {
             get

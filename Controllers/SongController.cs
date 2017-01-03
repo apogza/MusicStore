@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
+using System.Linq;
 
 namespace MusicStore.Controllers
 {
@@ -14,6 +15,8 @@ namespace MusicStore.Controllers
         {
             Includes = new List<string>{ "Album" };
             ListIncludes = new List<string>{ "Album" };
+            
+            OrderBy = (songs => songs.OrderBy(s => s.AlbumID).ThenBy(s => s.TrackNumber));
         }
 
         public override async Task<IActionResult> CreateEdit(int? id)

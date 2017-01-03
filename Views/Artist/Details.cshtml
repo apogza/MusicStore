@@ -22,7 +22,7 @@
     <div class="panel-body">
         @if(Model.Albums != null && Model.Albums.Count > 0)
         {
-            await Html.RenderPartialAsync("AlbumsPartial", Model.Albums);
+            await Html.RenderPartialAsync("AlbumsPartial", Model.Albums.OrderBy(a => a.YearRelease));
         }
     </div>
 </div>

@@ -6,5 +6,5 @@
 }
 
 <form asp-action="CreateEdit" class="form-horizontal">
-    await @Html.RenderPartialAsync("CreateEditPartial", Model)
+    @{ await Html.RenderPartialAsync("CreateEditPartial", Model); }
 </form>

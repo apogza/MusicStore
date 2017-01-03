@@ -6,8 +6,20 @@
 
 <h1>@Model.Label</h1>
 
-@if(Model.Albums != null && Model.Albums.Count > 0)
-{
-    <h3>Albums</h3>
-    await Html.RenderPartialAsync("AlbumsPartial", Model.Albums);
-}
+<div class="panel panel-default">
+    <div class="panel-heading">
+        Albums
+    </div>
+    <div class="panel-body">
+        @if(Model.Albums != null && Model.Albums.Count > 0)
+        {
+            await Html.RenderPartialAsync("AlbumsPartial", Model.Albums.OrderBy(a => a.YearRelease));
+        }
+        else
+        {
+            <p>No albums in this genre!</p>
+        }
+
+    </div>
+</div>
+

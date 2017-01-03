@@ -9,7 +9,8 @@ namespace MusicStore.Data
 {
     public interface IRepository<TEntity> where TEntity : BaseEntity 
     {
-        Task<TEntity> GetById(int id, IEnumerable<string> includes = null);
+        Task<TEntity> GetById(  int id,
+                                IEnumerable<string> includes = null);
         Task<IEnumerable<TEntity>> Get(
             Expression<Func<TEntity, bool>> filter = null,
             Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null,

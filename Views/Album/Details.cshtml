@@ -25,7 +25,7 @@
     <div class="panel-body">
         @if(Model.Songs != null && Model.Songs.Count > 0)
         {
-            await Html.RenderPartialAsync("SongPartial", Model.Songs);
+            await Html.RenderPartialAsync("SongPartial", Model.Songs.OrderBy(s => s.TrackNumber));
         }
         else
         {

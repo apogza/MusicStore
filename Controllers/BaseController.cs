@@ -23,7 +23,6 @@ namespace MusicStore.Controllers
         protected Helpers.RedirectObject RedirectAfterDbMod { get; set; }
         protected Expression<Func<TEntity, bool>> Filter { get; set; }
         protected Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> OrderBy { get; set;}
-
         public BaseController(DbContext context)
         {
             DbContext = context;
@@ -129,6 +128,5 @@ namespace MusicStore.Controllers
 
             return RedirectToAction("Index");
         }
-
     }
 }
